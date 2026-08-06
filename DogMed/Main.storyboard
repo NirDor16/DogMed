@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TBC-001">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+
+        <!-- Tab Bar Controller -->
+        <scene sceneID="scene-tabbar">
+            <objects>
+                <tabBarController id="TBC-001" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TBC-002">
+                        <rect key="frame" x="0.0" y="734" width="393" height="118"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="NAV-T-001" kind="relationship" relationship="viewControllers" id="SEG-TAB-1"/>
+                        <segue destination="NAV-D-001" kind="relationship" relationship="viewControllers" id="SEG-TAB-2"/>
+                        <segue destination="NAV-S-001" kind="relationship" relationship="viewControllers" id="SEG-TAB-3"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TBC-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+
+        <!-- Nav: Today -->
+        <scene sceneID="scene-nav-today">
+            <objects>
+                <navigationController id="NAV-T-001" customClass="AdaptiveNavigationController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Today" id="TBI-T"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NAV-T-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="TVC-001" kind="relationship" relationship="rootViewController" id="SEG-NAV-T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAV-T-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="300"/>
+        </scene>
+
+        <!-- Today View Controller -->
+        <scene sceneID="scene-today">
+            <objects>
+                <tableViewController id="TVC-001" customClass="TodayViewController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" id="TVC-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TVC-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="300"/>
+        </scene>
+
+        <!-- Nav: My Dogs -->
+        <scene sceneID="scene-nav-dogs">
+            <objects>
+                <navigationController id="NAV-D-001" customClass="AdaptiveNavigationController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Dogs" id="TBI-D"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NAV-D-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DLC-001" kind="relationship" relationship="rootViewController" id="SEG-NAV-D"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAV-D-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="600"/>
+        </scene>
+
+        <!-- Dogs List View Controller -->
+        <scene sceneID="scene-dogslist">
+            <objects>
+                <tableViewController id="DLC-001" customClass="DogsListViewController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" id="DLC-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tableView>
+                    <connections>
+                        <segue destination="AED-001" kind="show" identifier="showAddDog" id="SEG-ADD-DOG"/>
+                        <segue destination="DDC-001" kind="show" identifier="showDogDetail" id="SEG-DOG-DETAIL"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DLC-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="600"/>
+        </scene>
+
+        <!-- Dog Detail View Controller -->
+        <scene sceneID="scene-dogdetail">
+            <objects>
+                <viewController id="DDC-001" customClass="DogDetailViewController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DDC-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <segue destination="AED-001" kind="show" identifier="editDog" id="SEG-EDIT-DOG"/>
+                        <segue destination="AEM-001" kind="show" identifier="showAddMedication" id="SEG-ADD-MED"/>
+                        <segue destination="MED-001" kind="show" identifier="showMedicationDetail" id="SEG-MED-DETAIL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DDC-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="600" y="600"/>
+        </scene>
+
+        <!-- Add / Edit Dog View Controller -->
+        <scene sceneID="scene-addeditdog">
+            <objects>
+                <viewController id="AED-001" customClass="AddEditDogViewController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AED-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AED-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="600"/>
+        </scene>
+
+        <!-- Medication Detail View Controller -->
+        <scene sceneID="scene-meddetail">
+            <objects>
+                <viewController id="MED-001" customClass="MedicationDetailViewController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MED-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <segue destination="AEM-001" kind="show" identifier="editMedication" id="SEG-EDIT-MED"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MED-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="900"/>
+        </scene>
+
+        <!-- Add / Edit Medication View Controller -->
+        <scene sceneID="scene-addeditmed">
+            <objects>
+                <viewController id="AEM-001" customClass="AddEditMedicationViewController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AEM-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AEM-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1200" y="750"/>
+        </scene>
+
+        <!-- Nav: Settings -->
+        <scene sceneID="scene-nav-settings">
+            <objects>
+                <navigationController id="NAV-S-001" customClass="AdaptiveNavigationController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" id="TBI-S"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NAV-S-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SET-001" kind="relationship" relationship="rootViewController" id="SEG-NAV-S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAV-S-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="900"/>
+        </scene>
+
+        <!-- Settings View Controller -->
+        <scene sceneID="scene-settings">
+            <objects>
+                <viewController id="SET-001" customClass="SettingsViewController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SET-002">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SET-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="900"/>
+        </scene>
+
+    </scenes>
+</document>
