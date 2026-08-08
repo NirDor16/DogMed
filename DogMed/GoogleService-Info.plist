@@ -26,5 +26,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:1082033290640:ios:891f4dc473287b9cb74715</string>
+	<key>DATABASE_URL</key>
+	<string>https://dogmed-2f828-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>
