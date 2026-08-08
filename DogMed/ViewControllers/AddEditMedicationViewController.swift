@@ -53,6 +53,15 @@ class AddEditMedicationViewController: UIViewController {
             if let evening = DateUtils.timeFormatter.date(from: "20:00") {
                 time2Picker.date = evening
             }
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self, self.medication == nil else { return }
+                if let morning = DateUtils.timeFormatter.date(from: "08:00") {
+                    self.time1Picker.date = morning
+                }
+                if let evening = DateUtils.timeFormatter.date(from: "20:00") {
+                    self.time2Picker.date = evening
+                }
+            }
             return
         }
         nameField.text = medication.name
