@@ -95,6 +95,7 @@
                                         <constraint firstItem="TMC-SUB" firstAttribute="trailing" relation="lessThanOrEqualTo" secondItem="TMC-BTN" secondAttribute="leading" constant="-8" id="CON-TMC-10"/>
                                         <constraint firstItem="TMC-CV" firstAttribute="trailing" secondItem="TMC-BTN" secondAttribute="trailing" constant="16" id="CON-TMC-11"/>
                                         <constraint firstItem="TMC-BTN" firstAttribute="centerY" secondItem="TMC-CV" secondAttribute="centerY" id="CON-TMC-12"/>
+                                        <constraint firstItem="TMC-BTN" firstAttribute="height" constant="30" id="CON-TMC-13"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

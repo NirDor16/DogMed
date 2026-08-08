@@ -47,6 +47,12 @@ class AddEditMedicationViewController: UIViewController {
         guard let medication = medication else {
             hasEndDateSwitch.isOn = false
             startDatePicker.date = Date()
+            if let morning = DateUtils.timeFormatter.date(from: "08:00") {
+                time1Picker.date = morning
+            }
+            if let evening = DateUtils.timeFormatter.date(from: "20:00") {
+                time2Picker.date = evening
+            }
             return
         }
         nameField.text = medication.name
