@@ -314,11 +314,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DDC-NI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="DDC-EDITBTN">
-                            <connections>
-                                <action selector="editDogTapped" destination="DDC-001" id="AC-DDC-EDIT"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem key="rightBarButtonItems" systemItem="edit" id="DDC-EDITBTN">
+                                <connections>
+                                    <action selector="editDogTapped" destination="DDC-001" id="AC-DDC-EDIT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItems" title="Delete" style="plain" id="DDC-DELETEBTN">
+                                <connections>
+                                    <action selector="deleteDogTapped" destination="DDC-001" id="AC-DDC-DELETE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="DDC-IMG" id="OL-DDC-01"/>
@@ -326,6 +333,7 @@
                         <outlet property="breedAgeLabel" destination="DDC-BREED" id="OL-DDC-03"/>
                         <outlet property="notesLabel" destination="DDC-NOTES" id="OL-DDC-04"/>
                         <outlet property="tableView" destination="DDC-TABLE" id="OL-DDC-05"/>
+                        <outlet property="deleteButton" destination="DDC-DELETEBTN" id="OL-DDC-06"/>
                         <segue destination="AED-001" kind="show" identifier="editDog" id="SEG-EDIT-DOG"/>
                         <segue destination="AEM-001" kind="show" identifier="showAddMedication" id="SEG-ADD-MED"/>
                         <segue destination="MED-001" kind="show" identifier="showMedicationDetail" id="SEG-MED-DETAIL"/>
@@ -550,11 +558,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MED-NI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="MED-EDITBTN">
-                            <connections>
-                                <action selector="editTapped" destination="MED-001" id="AC-MED-EDIT"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem key="rightBarButtonItems" systemItem="edit" id="MED-EDITBTN">
+                                <connections>
+                                    <action selector="editTapped" destination="MED-001" id="AC-MED-EDIT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItems" title="Delete" style="plain" id="MED-DELETEBTN">
+                                <connections>
+                                    <action selector="deleteTapped" destination="MED-001" id="AC-MED-DELETE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="nameLabel" destination="MED-NAME" id="OL-MED-01"/>
@@ -562,6 +577,7 @@
                         <outlet property="notesLabel" destination="MED-NOTES" id="OL-MED-03"/>
                         <outlet property="vetLabel" destination="MED-VET" id="OL-MED-04"/>
                         <outlet property="tableView" destination="MED-TABLE" id="OL-MED-05"/>
+                        <outlet property="deleteButton" destination="MED-DELETEBTN" id="OL-MED-06"/>
                         <segue destination="AEM-001" kind="show" identifier="editMedication" id="SEG-EDIT-MED"/>
                     </connections>
                 </viewController>

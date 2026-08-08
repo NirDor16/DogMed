@@ -9,6 +9,7 @@ class MedicationDetailViewController: UIViewController {
     @IBOutlet weak var notesLabel: UILabel!
     @IBOutlet weak var vetLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
 
     private var currentMedication: Medication {
         for dog in FirebaseManager.shared.dogs where dog.id == medication.dogId {
@@ -42,6 +43,7 @@ class MedicationDetailViewController: UIViewController {
         tableView.backgroundColor = .systemBackground
         tableView.dataSource = self
         tableView.delegate = self
+        deleteButton.tintColor = .systemRed
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .dogMedDataDidChange, object: nil)
         reloadData()
     }
@@ -64,6 +66,34 @@ class MedicationDetailViewController: UIViewController {
 
     @IBAction func editTapped() {
         performSegue(withIdentifier: "editMedication", sender: currentMedication)
+    }
+
+    @IBAction func deleteTapped() {
+        let med = currentMedication
+        let alert = UIAlertController(
+            title: "Delete \(med.name)?",
+            message: "This will permanently delete this medication and its history.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+            FirebaseManager.shared.deleteMedication(med) { error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        self?.showAlert(message: error.localizedDescription)
+                        return
+                    }
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }
+        })
+        present(alert, animated: true)
+    }
+
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "DogMed", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
