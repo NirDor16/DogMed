@@ -30,6 +30,7 @@
 		DA0000000000000000000215 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA0000000000000000000116 /* LaunchScreen.storyboard */; };
 		DA0000000000000000000216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA0000000000000000000118 /* Assets.xcassets */; };
 		DA0000000000000000000217 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0000000000000000000119 /* PhotosUI.framework */; };
+		DA0000000000000000000218 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA000000000000000000011A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		DA0000000000000000000117 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA0000000000000000000118 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA0000000000000000000119 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		DA000000000000000000011A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				DA0000000000000000000116 /* LaunchScreen.storyboard */,
 				DA0000000000000000000117 /* Info.plist */,
 				DA0000000000000000000118 /* Assets.xcassets */,
+				DA000000000000000000011A /* GoogleService-Info.plist */,
 			);
 			path = DogMed;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				DA0000000000000000000214 /* Main.storyboard in Resources */,
 				DA0000000000000000000215 /* LaunchScreen.storyboard in Resources */,
 				DA0000000000000000000216 /* Assets.xcassets in Resources */,
+				DA0000000000000000000218 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
