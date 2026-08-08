@@ -633,7 +633,7 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="AEM-T1P" firstAttribute="top" secondItem="AEM-T1C" secondAttribute="top" id="CON-AEM-T1-01"/>
-                                                            <constraint firstItem="AEM-T1P" firstAttribute="leading" secondItem="AEM-T1C" secondAttribute="leading" id="CON-AEM-T1-02"/>
+                                                            <constraint firstItem="AEM-T1C" firstAttribute="trailing" secondItem="AEM-T1P" secondAttribute="trailing" id="CON-AEM-T1-02"/>
                                                             <constraint firstItem="AEM-T1C" firstAttribute="bottom" secondItem="AEM-T1P" secondAttribute="bottom" id="CON-AEM-T1-03"/>
                                                         </constraints>
                                                     </view>
@@ -654,7 +654,7 @@
                                                             <constraint firstItem="AEM-T2L" firstAttribute="leading" secondItem="AEM-T2C" secondAttribute="leading" id="CON-AEM-T2-02"/>
                                                             <constraint firstItem="AEM-T2C" firstAttribute="trailing" secondItem="AEM-T2L" secondAttribute="trailing" id="CON-AEM-T2-03"/>
                                                             <constraint firstItem="AEM-T2P" firstAttribute="top" secondItem="AEM-T2L" secondAttribute="bottom" constant="4" id="CON-AEM-T2-04"/>
-                                                            <constraint firstItem="AEM-T2P" firstAttribute="leading" secondItem="AEM-T2C" secondAttribute="leading" id="CON-AEM-T2-05"/>
+                                                            <constraint firstItem="AEM-T2C" firstAttribute="trailing" secondItem="AEM-T2P" secondAttribute="trailing" id="CON-AEM-T2-05"/>
                                                             <constraint firstItem="AEM-T2C" firstAttribute="bottom" secondItem="AEM-T2P" secondAttribute="bottom" id="CON-AEM-T2-06"/>
                                                         </constraints>
                                                     </view>
@@ -745,7 +745,7 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="AEM-SDP" firstAttribute="top" secondItem="AEM-SDC" secondAttribute="top" id="CON-AEM-SD-01"/>
-                                                            <constraint firstItem="AEM-SDP" firstAttribute="leading" secondItem="AEM-SDC" secondAttribute="leading" id="CON-AEM-SD-02"/>
+                                                            <constraint firstItem="AEM-SDC" firstAttribute="trailing" secondItem="AEM-SDP" secondAttribute="trailing" id="CON-AEM-SD-02"/>
                                                             <constraint firstItem="AEM-SDC" firstAttribute="bottom" secondItem="AEM-SDP" secondAttribute="bottom" id="CON-AEM-SD-03"/>
                                                         </constraints>
                                                     </view>
@@ -777,7 +777,7 @@
                                                             <constraint firstItem="AEM-EDL" firstAttribute="leading" secondItem="AEM-EDC" secondAttribute="leading" id="CON-AEM-ED-02"/>
                                                             <constraint firstItem="AEM-EDC" firstAttribute="trailing" secondItem="AEM-EDL" secondAttribute="trailing" id="CON-AEM-ED-03"/>
                                                             <constraint firstItem="AEM-EDP" firstAttribute="top" secondItem="AEM-EDL" secondAttribute="bottom" constant="4" id="CON-AEM-ED-04"/>
-                                                            <constraint firstItem="AEM-EDP" firstAttribute="leading" secondItem="AEM-EDC" secondAttribute="leading" id="CON-AEM-ED-05"/>
+                                                            <constraint firstItem="AEM-EDC" firstAttribute="trailing" secondItem="AEM-EDP" secondAttribute="trailing" id="CON-AEM-ED-05"/>
                                                             <constraint firstItem="AEM-EDC" firstAttribute="bottom" secondItem="AEM-EDP" secondAttribute="bottom" id="CON-AEM-ED-06"/>
                                                         </constraints>
                                                     </view>
