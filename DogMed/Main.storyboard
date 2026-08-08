@@ -234,7 +234,7 @@
                                 <rect key="frame" x="126" y="246" width="140" height="30"/>
                                 <state key="normal" title="+ Add Medication"/>
                                 <connections>
-                                    <action selector="addMedicationTapped" destination="DDC-001" id="AC-DDC-ADDMED"/>
+                                    <action selector="addMedicationTapped" destination="DDC-001" eventType="touchUpInside" id="AC-DDC-ADDMED"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DDC-TABLE">
@@ -357,7 +357,7 @@
                                                 <rect key="frame" x="146" y="116" width="100" height="24"/>
                                                 <state key="normal" title="Choose Photo"/>
                                                 <connections>
-                                                    <action selector="choosePhotoTapped" destination="AED-001" id="AC-AED-CHOOSE"/>
+                                                    <action selector="choosePhotoTapped" destination="AED-001" eventType="touchUpInside" id="AC-AED-CHOOSE"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AED-L1">
