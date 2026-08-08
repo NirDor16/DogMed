@@ -829,13 +829,13 @@
                         <outlet property="time2Container" destination="AEM-T2C" id="OL-AEM-06"/>
                         <outlet property="time2Picker" destination="AEM-T2P" id="OL-AEM-07"/>
                         <outlet property="weekdaysContainer" destination="AEM-WDC" id="OL-AEM-08"/>
-                        <outlet property="weekdayButtons" destination="AEM-WD1" id="OL-AEM-09"/>
-                        <outlet property="weekdayButtons" destination="AEM-WD2" id="OL-AEM-10"/>
-                        <outlet property="weekdayButtons" destination="AEM-WD3" id="OL-AEM-11"/>
-                        <outlet property="weekdayButtons" destination="AEM-WD4" id="OL-AEM-12"/>
-                        <outlet property="weekdayButtons" destination="AEM-WD5" id="OL-AEM-13"/>
-                        <outlet property="weekdayButtons" destination="AEM-WD6" id="OL-AEM-14"/>
-                        <outlet property="weekdayButtons" destination="AEM-WD7" id="OL-AEM-15"/>
+                        <outletCollection property="weekdayButtons" destination="AEM-WD1" id="OL-AEM-09"/>
+                        <outletCollection property="weekdayButtons" destination="AEM-WD2" id="OL-AEM-10"/>
+                        <outletCollection property="weekdayButtons" destination="AEM-WD3" id="OL-AEM-11"/>
+                        <outletCollection property="weekdayButtons" destination="AEM-WD4" id="OL-AEM-12"/>
+                        <outletCollection property="weekdayButtons" destination="AEM-WD5" id="OL-AEM-13"/>
+                        <outletCollection property="weekdayButtons" destination="AEM-WD6" id="OL-AEM-14"/>
+                        <outletCollection property="weekdayButtons" destination="AEM-WD7" id="OL-AEM-15"/>
                         <outlet property="startDatePicker" destination="AEM-SDP" id="OL-AEM-16"/>
                         <outlet property="hasEndDateSwitch" destination="AEM-SW" id="OL-AEM-17"/>
                         <outlet property="endDateContainer" destination="AEM-EDC" id="OL-AEM-18"/>
