@@ -10,7 +10,7 @@ DogMed helps you manage multiple dogs and stay on top of their medication schedu
 
 - **Today** — see every medication due today across all your dogs, and mark it as given
 - **My Dogs** — add, edit, and remove dogs, each with a photo, breed, age, and notes
-- **Medications** — assign medications per dog with dosage, schedule (once a day, twice a day, or specific days), start/end dates, notes, and vet name
+- **Medications** — add, edit, and remove medications per dog with dosage, schedule (once a day, twice a day, or specific days), start/end dates, notes, and vet name
 - **History** — tracks whether each dose was given on past dates, not just today
 - **Synced with Firebase** — your data is saved to Firebase Realtime Database and updates live
 - **Dark mode** — Light, Dark, or System, chosen in Settings
