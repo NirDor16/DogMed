@@ -4,12 +4,11 @@ class MedicationDetailViewController: UIViewController {
 
     var medication: Medication!
 
-    private let nameLabel = UILabel()
-    private let detailLabel = UILabel()
-    private let notesLabel = UILabel()
-    private let vetLabel = UILabel()
-    private let historyHeaderLabel = UILabel()
-    private let tableView = UITableView(frame: .zero, style: .plain)
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var vetLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
 
     private var currentMedication: Medication {
         for dog in FirebaseManager.shared.dogs where dog.id == medication.dogId {
@@ -36,10 +35,9 @@ class MedicationDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         title = medication.name
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTapped))
-        setupLayout()
+        tableView.dataSource = self
+        tableView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .dogMedDataDidChange, object: nil)
         reloadData()
     }
@@ -47,45 +45,6 @@ class MedicationDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadData()
-    }
-
-    private func setupLayout() {
-        [nameLabel, detailLabel, notesLabel, vetLabel].forEach { $0.numberOfLines = 0 }
-        nameLabel.font = .boldSystemFont(ofSize: 22)
-        detailLabel.font = .systemFont(ofSize: 15)
-        detailLabel.textColor = .secondaryLabel
-        notesLabel.font = .systemFont(ofSize: 15)
-        vetLabel.font = .systemFont(ofSize: 14)
-        vetLabel.textColor = .secondaryLabel
-
-        historyHeaderLabel.text = "RECENT HISTORY"
-        historyHeaderLabel.font = .systemFont(ofSize: 13, weight: .semibold)
-        historyHeaderLabel.textColor = .secondaryLabel
-
-        let headerStack = UIStackView(arrangedSubviews: [nameLabel, detailLabel, notesLabel, vetLabel, historyHeaderLabel])
-        headerStack.axis = .vertical
-        headerStack.spacing = 8
-        headerStack.translatesAutoresizingMaskIntoConstraints = false
-        headerStack.setCustomSpacing(16, after: vetLabel)
-
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.backgroundColor = .systemBackground
-
-        view.addSubview(headerStack)
-        view.addSubview(tableView)
-
-        NSLayoutConstraint.activate([
-            headerStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            headerStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            headerStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-
-            tableView.topAnchor.constraint(equalTo: headerStack.bottomAnchor, constant: 4),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
 
     @objc private func reloadData() {
@@ -99,7 +58,7 @@ class MedicationDetailViewController: UIViewController {
         tableView.reloadData()
     }
 
-    @objc private func editTapped() {
+    @IBAction func editTapped() {
         performSegue(withIdentifier: "editMedication", sender: currentMedication)
     }
 
@@ -117,17 +76,21 @@ extension MedicationDetailViewController: UITableViewDataSource, UITableViewDele
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let rows = historyRows
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath)
         guard !rows.isEmpty else {
             cell.textLabel?.text = "No history yet"
             cell.textLabel?.textColor = .secondaryLabel
             cell.textLabel?.textAlignment = .center
+            cell.detailTextLabel?.text = nil
             cell.selectionStyle = .none
             return cell
         }
         let row = rows[indexPath.row]
         let dateString = DateUtils.displayDateFormatter.string(from: row.date)
         cell.textLabel?.text = "\(dateString) — \(row.occurrence.time)"
+        cell.textLabel?.textColor = .label
+        cell.textLabel?.textAlignment = .natural
+        cell.selectionStyle = .default
         cell.detailTextLabel?.text = row.occurrence.status.displayName
         cell.detailTextLabel?.textColor = row.occurrence.status == .given ? .systemGreen : .systemOrange
         return cell

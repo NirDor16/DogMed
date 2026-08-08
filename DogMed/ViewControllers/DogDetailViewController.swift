@@ -4,14 +4,12 @@ class DogDetailViewController: UIViewController {
 
     var dog: Dog!
 
-    private let headerView = UIView()
-    private let imageView = UIImageView()
-    private let nameLabel = UILabel()
-    private let breedAgeLabel = UILabel()
-    private let notesLabel = UILabel()
-    private let addMedicationButton = UIButton(type: .system)
-    private let medicationsHeaderLabel = UILabel()
-    private let tableView = UITableView(frame: .zero, style: .plain)
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var breedAgeLabel: UILabel!
+    @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+
     private let reuseIdentifier = "MedicationListCell"
 
     private var currentDog: Dog {
@@ -20,11 +18,14 @@ class DogDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         title = dog.name
-        setupHeader()
-        setupTable()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editDogTapped))
+        imageView.layer.cornerRadius = imageView.bounds.width / 2
+        imageView.clipsToBounds = true
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 70
+
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .dogMedDataDidChange, object: nil)
         reloadData()
     }
@@ -32,95 +33,6 @@ class DogDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadData()
-    }
-
-    private func setupHeader() {
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(headerView)
-
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 40
-        imageView.tintColor = .secondaryLabel
-        imageView.backgroundColor = .secondarySystemBackground
-
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.font = .boldSystemFont(ofSize: 22)
-        nameLabel.textColor = .label
-        nameLabel.textAlignment = .center
-
-        breedAgeLabel.translatesAutoresizingMaskIntoConstraints = false
-        breedAgeLabel.font = .systemFont(ofSize: 15)
-        breedAgeLabel.textColor = .secondaryLabel
-        breedAgeLabel.textAlignment = .center
-
-        notesLabel.translatesAutoresizingMaskIntoConstraints = false
-        notesLabel.font = .systemFont(ofSize: 14)
-        notesLabel.textColor = .label
-        notesLabel.numberOfLines = 0
-        notesLabel.textAlignment = .center
-
-        addMedicationButton.translatesAutoresizingMaskIntoConstraints = false
-        addMedicationButton.setTitle("+ Add Medication", for: .normal)
-        addMedicationButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
-        addMedicationButton.addTarget(self, action: #selector(addMedicationTapped), for: .touchUpInside)
-
-        medicationsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
-        medicationsHeaderLabel.font = .systemFont(ofSize: 13, weight: .semibold)
-        medicationsHeaderLabel.textColor = .secondaryLabel
-        medicationsHeaderLabel.text = "MEDICATIONS"
-
-        [imageView, nameLabel, breedAgeLabel, notesLabel, addMedicationButton, medicationsHeaderLabel].forEach { headerView.addSubview($0) }
-
-        NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-
-            imageView.topAnchor.constraint(equalTo: headerView.topAnchor),
-            imageView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 80),
-            imageView.heightAnchor.constraint(equalToConstant: 80),
-
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
-            nameLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            nameLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-
-            breedAgeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-            breedAgeLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            breedAgeLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-
-            notesLabel.topAnchor.constraint(equalTo: breedAgeLabel.bottomAnchor, constant: 8),
-            notesLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            notesLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-
-            addMedicationButton.topAnchor.constraint(equalTo: notesLabel.bottomAnchor, constant: 12),
-            addMedicationButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-
-            medicationsHeaderLabel.topAnchor.constraint(equalTo: addMedicationButton.bottomAnchor, constant: 12),
-            medicationsHeaderLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-            medicationsHeaderLabel.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
-            medicationsHeaderLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor)
-        ])
-    }
-
-    private func setupTable() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(MedicationListCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 70
-        tableView.backgroundColor = .systemBackground
-        view.addSubview(tableView)
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 8),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
 
     @objc private func reloadData() {
@@ -132,11 +44,11 @@ class DogDetailViewController: UIViewController {
         tableView.reloadData()
     }
 
-    @objc private func editDogTapped() {
+    @IBAction func editDogTapped() {
         performSegue(withIdentifier: "editDog", sender: currentDog)
     }
 
-    @objc private func addMedicationTapped() {
+    @IBAction func addMedicationTapped() {
         performSegue(withIdentifier: "showAddMedication", sender: currentDog)
     }
 

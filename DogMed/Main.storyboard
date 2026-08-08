@@ -50,10 +50,61 @@
         <scene sceneID="scene-today">
             <objects>
                 <tableViewController id="TVC-001" customClass="TodayViewController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" id="TVC-002">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="70" sectionHeaderHeight="18" sectionFooterHeight="18" id="TVC-002">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TodayMedicationCell" rowHeight="70" id="TMC-CELL" customClass="TodayMedicationCell" customModule="DogMed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TMC-CELL" id="TMC-CV">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08:00" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMC-TIME">
+                                            <rect key="frame" x="16" y="24" width="52" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog — Medication" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMC-TITLE">
+                                            <rect key="frame" x="80" y="10" width="200" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dosage" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMC-SUB">
+                                            <rect key="frame" x="80" y="34" width="200" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMC-BTN">
+                                            <rect key="frame" x="290" y="20" width="87" height="30"/>
+                                            <state key="normal" title="Mark Given"/>
+                                            <connections>
+                                                <action selector="statusTapped:" destination="TMC-CELL" eventType="touchUpInside" id="AC-TMC-01"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="TMC-TIME" firstAttribute="leading" secondItem="TMC-CV" secondAttribute="leading" constant="16" id="CON-TMC-01"/>
+                                        <constraint firstItem="TMC-TIME" firstAttribute="centerY" secondItem="TMC-CV" secondAttribute="centerY" id="CON-TMC-02"/>
+                                        <constraint firstItem="TMC-TIME" firstAttribute="width" constant="52" id="CON-TMC-03"/>
+                                        <constraint firstItem="TMC-TITLE" firstAttribute="leading" secondItem="TMC-TIME" secondAttribute="trailing" constant="12" id="CON-TMC-04"/>
+                                        <constraint firstItem="TMC-TITLE" firstAttribute="top" secondItem="TMC-CV" secondAttribute="top" constant="10" id="CON-TMC-05"/>
+                                        <constraint firstItem="TMC-TITLE" firstAttribute="trailing" relation="lessThanOrEqualTo" secondItem="TMC-BTN" secondAttribute="leading" constant="-8" id="CON-TMC-06"/>
+                                        <constraint firstItem="TMC-SUB" firstAttribute="leading" secondItem="TMC-TIME" secondAttribute="trailing" constant="12" id="CON-TMC-07"/>
+                                        <constraint firstItem="TMC-SUB" firstAttribute="top" secondItem="TMC-TITLE" secondAttribute="bottom" constant="2" id="CON-TMC-08"/>
+                                        <constraint firstItem="TMC-SUB" firstAttribute="trailing" relation="lessThanOrEqualTo" secondItem="TMC-BTN" secondAttribute="leading" constant="-8" id="CON-TMC-10"/>
+                                        <constraint firstItem="TMC-CV" firstAttribute="trailing" secondItem="TMC-BTN" secondAttribute="trailing" constant="16" id="CON-TMC-11"/>
+                                        <constraint firstItem="TMC-BTN" firstAttribute="centerY" secondItem="TMC-CV" secondAttribute="centerY" id="CON-TMC-12"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="timeLabel" destination="TMC-TIME" id="OL-TMC-01"/>
+                                    <outlet property="titleLabel" destination="TMC-TITLE" id="OL-TMC-02"/>
+                                    <outlet property="subtitleLabel" destination="TMC-SUB" id="OL-TMC-03"/>
+                                    <outlet property="statusButton" destination="TMC-BTN" id="OL-TMC-04"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVC-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -83,11 +134,67 @@
         <scene sceneID="scene-dogslist">
             <objects>
                 <tableViewController id="DLC-001" customClass="DogsListViewController" customModule="DogMed" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" id="DLC-002">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" estimatedRowHeight="76" sectionHeaderHeight="18" sectionFooterHeight="18" id="DLC-002">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DogListCell" rowHeight="76" id="DLC-CELL" customClass="DogListCell" customModule="DogMed" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="76"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DLC-CELL" id="DLC-CV">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="76"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLC-PHOTO">
+                                            <rect key="frame" x="16" y="14" width="48" height="48"/>
+                                            <color key="backgroundColor" white="0.9" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Name" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLC-NAME">
+                                            <rect key="frame" x="76" y="14" width="200" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed • Age" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLC-DETAIL">
+                                            <rect key="frame" x="76" y="34" width="200" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 active medications" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLC-MEDS">
+                                            <rect key="frame" x="76" y="52" width="200" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DLC-PHOTO" firstAttribute="leading" secondItem="DLC-CV" secondAttribute="leading" constant="16" id="CON-DLC-01"/>
+                                        <constraint firstItem="DLC-PHOTO" firstAttribute="centerY" secondItem="DLC-CV" secondAttribute="centerY" id="CON-DLC-02"/>
+                                        <constraint firstItem="DLC-PHOTO" firstAttribute="width" constant="48" id="CON-DLC-03"/>
+                                        <constraint firstItem="DLC-PHOTO" firstAttribute="height" constant="48" id="CON-DLC-04"/>
+                                        <constraint firstItem="DLC-NAME" firstAttribute="leading" secondItem="DLC-PHOTO" secondAttribute="trailing" constant="12" id="CON-DLC-07"/>
+                                        <constraint firstItem="DLC-NAME" firstAttribute="top" secondItem="DLC-CV" secondAttribute="top" constant="14" id="CON-DLC-08"/>
+                                        <constraint firstItem="DLC-CV" firstAttribute="trailing" relation="greaterThanOrEqualTo" secondItem="DLC-NAME" secondAttribute="trailing" constant="16" id="CON-DLC-09"/>
+                                        <constraint firstItem="DLC-DETAIL" firstAttribute="leading" secondItem="DLC-PHOTO" secondAttribute="trailing" constant="12" id="CON-DLC-10"/>
+                                        <constraint firstItem="DLC-DETAIL" firstAttribute="top" secondItem="DLC-NAME" secondAttribute="bottom" constant="2" id="CON-DLC-11"/>
+                                        <constraint firstItem="DLC-MEDS" firstAttribute="leading" secondItem="DLC-PHOTO" secondAttribute="trailing" constant="12" id="CON-DLC-12"/>
+                                        <constraint firstItem="DLC-MEDS" firstAttribute="top" secondItem="DLC-DETAIL" secondAttribute="bottom" constant="2" id="CON-DLC-13"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="photoImageView" destination="DLC-PHOTO" id="OL-DLC-01"/>
+                                    <outlet property="nameLabel" destination="DLC-NAME" id="OL-DLC-02"/>
+                                    <outlet property="detailLabel" destination="DLC-DETAIL" id="OL-DLC-03"/>
+                                    <outlet property="medsLabel" destination="DLC-MEDS" id="OL-DLC-04"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
                     </tableView>
+                    <navigationItem key="navigationItem" title="My Dogs" id="DLC-NI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DLC-ADDBTN">
+                            <connections>
+                                <action selector="addTapped" destination="DLC-001" id="AC-DLC-ADD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="AED-001" kind="show" identifier="showAddDog" id="SEG-ADD-DOG"/>
                         <segue destination="DDC-001" kind="show" identifier="showDogDetail" id="SEG-DOG-DETAIL"/>
@@ -105,9 +212,119 @@
                     <view key="view" contentMode="scaleToFill" id="DDC-002">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDC-IMG">
+                                <rect key="frame" x="156" y="72" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.9" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDC-NAME">
+                                <rect key="frame" x="16" y="160" width="361" height="26"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed • Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDC-BREED">
+                                <rect key="frame" x="16" y="190" width="361" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" numberOfLines="0" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDC-NOTES">
+                                <rect key="frame" x="16" y="216" width="361" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDC-ADDMED">
+                                <rect key="frame" x="126" y="246" width="140" height="30"/>
+                                <state key="normal" title="+ Add Medication"/>
+                                <connections>
+                                    <action selector="addMedicationTapped" destination="DDC-001" id="AC-DDC-ADDMED"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DDC-TABLE">
+                                <rect key="frame" x="0.0" y="288" width="393" height="564"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MedicationListCell" id="MLC-CELL" customClass="MedicationListCell" customModule="DogMed" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MLC-CELL" id="MLC-CV">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication Name" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLC-NAME">
+                                                    <rect key="frame" x="16" y="10" width="250" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" numberOfLines="2" text="Dosage • Time • Frequency" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLC-DETAIL">
+                                                    <rect key="frame" x="16" y="32" width="250" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </label>
+                                                <label opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLC-STATUS">
+                                                    <rect key="frame" x="300" y="24" width="70" height="22"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MLC-NAME" firstAttribute="leading" secondItem="MLC-CV" secondAttribute="leading" constant="16" id="CON-MLC-01"/>
+                                                <constraint firstItem="MLC-NAME" firstAttribute="top" secondItem="MLC-CV" secondAttribute="top" constant="10" id="CON-MLC-02"/>
+                                                <constraint firstItem="MLC-NAME" firstAttribute="trailing" relation="lessThanOrEqualTo" secondItem="MLC-STATUS" secondAttribute="leading" constant="-8" id="CON-MLC-03"/>
+                                                <constraint firstItem="MLC-DETAIL" firstAttribute="leading" secondItem="MLC-CV" secondAttribute="leading" constant="16" id="CON-MLC-04"/>
+                                                <constraint firstItem="MLC-DETAIL" firstAttribute="top" secondItem="MLC-NAME" secondAttribute="bottom" constant="2" id="CON-MLC-05"/>
+                                                <constraint firstItem="MLC-DETAIL" firstAttribute="trailing" relation="lessThanOrEqualTo" secondItem="MLC-STATUS" secondAttribute="leading" constant="-8" id="CON-MLC-06"/>
+                                                <constraint firstItem="MLC-CV" firstAttribute="bottom" secondItem="MLC-DETAIL" secondAttribute="bottom" constant="10" id="CON-MLC-07"/>
+                                                <constraint firstItem="MLC-CV" firstAttribute="trailing" secondItem="MLC-STATUS" secondAttribute="trailing" constant="16" id="CON-MLC-08"/>
+                                                <constraint firstItem="MLC-STATUS" firstAttribute="centerY" secondItem="MLC-CV" secondAttribute="centerY" id="CON-MLC-09"/>
+                                                <constraint firstItem="MLC-STATUS" firstAttribute="width" constant="70" id="CON-MLC-10"/>
+                                                <constraint firstItem="MLC-STATUS" firstAttribute="height" constant="22" id="CON-MLC-11"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="MLC-NAME" id="OL-MLC-01"/>
+                                            <outlet property="detailLabel" destination="MLC-DETAIL" id="OL-MLC-02"/>
+                                            <outlet property="statusLabel" destination="MLC-STATUS" id="OL-MLC-03"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="DDC-001" id="OL-DDC-DS"/>
+                                    <outlet property="delegate" destination="DDC-001" id="OL-DDC-DEL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DDC-IMG" firstAttribute="top" secondItem="DDC-002" secondAttribute="top" constant="72" id="CON-DDC-01"/>
+                            <constraint firstItem="DDC-IMG" firstAttribute="centerX" secondItem="DDC-002" secondAttribute="centerX" id="CON-DDC-02"/>
+                            <constraint firstItem="DDC-IMG" firstAttribute="width" constant="80" id="CON-DDC-03"/>
+                            <constraint firstItem="DDC-IMG" firstAttribute="height" constant="80" id="CON-DDC-04"/>
+                            <constraint firstItem="DDC-NAME" firstAttribute="top" secondItem="DDC-IMG" secondAttribute="bottom" constant="8" id="CON-DDC-05"/>
+                            <constraint firstItem="DDC-NAME" firstAttribute="leading" secondItem="DDC-002" secondAttribute="leading" constant="16" id="CON-DDC-06"/>
+                            <constraint firstItem="DDC-002" firstAttribute="trailing" secondItem="DDC-NAME" secondAttribute="trailing" constant="16" id="CON-DDC-07"/>
+                            <constraint firstItem="DDC-BREED" firstAttribute="top" secondItem="DDC-NAME" secondAttribute="bottom" constant="4" id="CON-DDC-08"/>
+                            <constraint firstItem="DDC-BREED" firstAttribute="leading" secondItem="DDC-002" secondAttribute="leading" constant="16" id="CON-DDC-09"/>
+                            <constraint firstItem="DDC-002" firstAttribute="trailing" secondItem="DDC-BREED" secondAttribute="trailing" constant="16" id="CON-DDC-10"/>
+                            <constraint firstItem="DDC-NOTES" firstAttribute="top" secondItem="DDC-BREED" secondAttribute="bottom" constant="8" id="CON-DDC-11"/>
+                            <constraint firstItem="DDC-NOTES" firstAttribute="leading" secondItem="DDC-002" secondAttribute="leading" constant="16" id="CON-DDC-12"/>
+                            <constraint firstItem="DDC-002" firstAttribute="trailing" secondItem="DDC-NOTES" secondAttribute="trailing" constant="16" id="CON-DDC-13"/>
+                            <constraint firstItem="DDC-ADDMED" firstAttribute="top" secondItem="DDC-NOTES" secondAttribute="bottom" constant="12" id="CON-DDC-14"/>
+                            <constraint firstItem="DDC-ADDMED" firstAttribute="centerX" secondItem="DDC-002" secondAttribute="centerX" id="CON-DDC-15"/>
+                            <constraint firstItem="DDC-TABLE" firstAttribute="top" secondItem="DDC-ADDMED" secondAttribute="bottom" constant="12" id="CON-DDC-16"/>
+                            <constraint firstItem="DDC-TABLE" firstAttribute="leading" secondItem="DDC-002" secondAttribute="leading" id="CON-DDC-17"/>
+                            <constraint firstItem="DDC-002" firstAttribute="trailing" secondItem="DDC-TABLE" secondAttribute="trailing" id="CON-DDC-18"/>
+                            <constraint firstItem="DDC-002" firstAttribute="bottom" secondItem="DDC-TABLE" secondAttribute="bottom" id="CON-DDC-19"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="DDC-NI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="DDC-EDITBTN">
+                            <connections>
+                                <action selector="editDogTapped" destination="DDC-001" id="AC-DDC-EDIT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="imageView" destination="DDC-IMG" id="OL-DDC-01"/>
+                        <outlet property="nameLabel" destination="DDC-NAME" id="OL-DDC-02"/>
+                        <outlet property="breedAgeLabel" destination="DDC-BREED" id="OL-DDC-03"/>
+                        <outlet property="notesLabel" destination="DDC-NOTES" id="OL-DDC-04"/>
+                        <outlet property="tableView" destination="DDC-TABLE" id="OL-DDC-05"/>
                         <segue destination="AED-001" kind="show" identifier="editDog" id="SEG-EDIT-DOG"/>
                         <segue destination="AEM-001" kind="show" identifier="showAddMedication" id="SEG-ADD-MED"/>
                         <segue destination="MED-001" kind="show" identifier="showMedicationDetail" id="SEG-MED-DETAIL"/>
@@ -125,8 +342,135 @@
                     <view key="view" contentMode="scaleToFill" id="AED-002">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AED-SCROLL">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AED-CONTENT">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="560"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="AED-PHOTO">
+                                                <rect key="frame" x="151" y="20" width="90" height="90"/>
+                                                <color key="backgroundColor" white="0.9" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AED-CHOOSE">
+                                                <rect key="frame" x="146" y="116" width="100" height="24"/>
+                                                <state key="normal" title="Choose Photo"/>
+                                                <connections>
+                                                    <action selector="choosePhotoTapped" destination="AED-001" id="AC-AED-CHOOSE"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AED-L1">
+                                                <rect key="frame" x="20" y="160" width="353" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" translatesAutoresizingMaskIntoConstraints="NO" id="AED-NAME">
+                                                <rect key="frame" x="20" y="180" width="353" height="36"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AED-L2">
+                                                <rect key="frame" x="20" y="232" width="353" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" translatesAutoresizingMaskIntoConstraints="NO" id="AED-BREED">
+                                                <rect key="frame" x="20" y="252" width="353" height="36"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age (years)" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AED-L3">
+                                                <rect key="frame" x="20" y="304" width="353" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" keyboardType="numberPad" translatesAutoresizingMaskIntoConstraints="NO" id="AED-AGE">
+                                                <rect key="frame" x="20" y="324" width="353" height="36"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AED-L4">
+                                                <rect key="frame" x="20" y="376" width="353" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AED-NOTES">
+                                                <rect key="frame" x="20" y="396" width="353" height="100"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="AED-PHOTO" firstAttribute="top" secondItem="AED-CONTENT" secondAttribute="top" constant="20" id="CON-AED-01"/>
+                                            <constraint firstItem="AED-PHOTO" firstAttribute="centerX" secondItem="AED-CONTENT" secondAttribute="centerX" id="CON-AED-02"/>
+                                            <constraint firstItem="AED-PHOTO" firstAttribute="width" constant="90" id="CON-AED-03"/>
+                                            <constraint firstItem="AED-PHOTO" firstAttribute="height" constant="90" id="CON-AED-04"/>
+                                            <constraint firstItem="AED-CHOOSE" firstAttribute="top" secondItem="AED-PHOTO" secondAttribute="bottom" constant="6" id="CON-AED-05"/>
+                                            <constraint firstItem="AED-CHOOSE" firstAttribute="centerX" secondItem="AED-CONTENT" secondAttribute="centerX" id="CON-AED-06"/>
+                                            <constraint firstItem="AED-L1" firstAttribute="top" secondItem="AED-CHOOSE" secondAttribute="bottom" constant="20" id="CON-AED-07"/>
+                                            <constraint firstItem="AED-L1" firstAttribute="leading" secondItem="AED-CONTENT" secondAttribute="leading" constant="20" id="CON-AED-08"/>
+                                            <constraint firstItem="AED-CONTENT" firstAttribute="trailing" secondItem="AED-L1" secondAttribute="trailing" constant="20" id="CON-AED-09"/>
+                                            <constraint firstItem="AED-NAME" firstAttribute="top" secondItem="AED-L1" secondAttribute="bottom" constant="4" id="CON-AED-10"/>
+                                            <constraint firstItem="AED-NAME" firstAttribute="leading" secondItem="AED-CONTENT" secondAttribute="leading" constant="20" id="CON-AED-11"/>
+                                            <constraint firstItem="AED-CONTENT" firstAttribute="trailing" secondItem="AED-NAME" secondAttribute="trailing" constant="20" id="CON-AED-12"/>
+                                            <constraint firstItem="AED-L2" firstAttribute="top" secondItem="AED-NAME" secondAttribute="bottom" constant="16" id="CON-AED-13"/>
+                                            <constraint firstItem="AED-L2" firstAttribute="leading" secondItem="AED-CONTENT" secondAttribute="leading" constant="20" id="CON-AED-14"/>
+                                            <constraint firstItem="AED-CONTENT" firstAttribute="trailing" secondItem="AED-L2" secondAttribute="trailing" constant="20" id="CON-AED-15"/>
+                                            <constraint firstItem="AED-BREED" firstAttribute="top" secondItem="AED-L2" secondAttribute="bottom" constant="4" id="CON-AED-16"/>
+                                            <constraint firstItem="AED-BREED" firstAttribute="leading" secondItem="AED-CONTENT" secondAttribute="leading" constant="20" id="CON-AED-17"/>
+                                            <constraint firstItem="AED-CONTENT" firstAttribute="trailing" secondItem="AED-BREED" secondAttribute="trailing" constant="20" id="CON-AED-18"/>
+                                            <constraint firstItem="AED-L3" firstAttribute="top" secondItem="AED-BREED" secondAttribute="bottom" constant="16" id="CON-AED-19"/>
+                                            <constraint firstItem="AED-L3" firstAttribute="leading" secondItem="AED-CONTENT" secondAttribute="leading" constant="20" id="CON-AED-20"/>
+                                            <constraint firstItem="AED-CONTENT" firstAttribute="trailing" secondItem="AED-L3" secondAttribute="trailing" constant="20" id="CON-AED-21"/>
+                                            <constraint firstItem="AED-AGE" firstAttribute="top" secondItem="AED-L3" secondAttribute="bottom" constant="4" id="CON-AED-22"/>
+                                            <constraint firstItem="AED-AGE" firstAttribute="leading" secondItem="AED-CONTENT" secondAttribute="leading" constant="20" id="CON-AED-23"/>
+                                            <constraint firstItem="AED-CONTENT" firstAttribute="trailing" secondItem="AED-AGE" secondAttribute="trailing" constant="20" id="CON-AED-24"/>
+                                            <constraint firstItem="AED-L4" firstAttribute="top" secondItem="AED-AGE" secondAttribute="bottom" constant="16" id="CON-AED-25"/>
+                                            <constraint firstItem="AED-L4" firstAttribute="leading" secondItem="AED-CONTENT" secondAttribute="leading" constant="20" id="CON-AED-26"/>
+                                            <constraint firstItem="AED-CONTENT" firstAttribute="trailing" secondItem="AED-L4" secondAttribute="trailing" constant="20" id="CON-AED-27"/>
+                                            <constraint firstItem="AED-NOTES" firstAttribute="top" secondItem="AED-L4" secondAttribute="bottom" constant="4" id="CON-AED-28"/>
+                                            <constraint firstItem="AED-NOTES" firstAttribute="leading" secondItem="AED-CONTENT" secondAttribute="leading" constant="20" id="CON-AED-29"/>
+                                            <constraint firstItem="AED-CONTENT" firstAttribute="trailing" secondItem="AED-NOTES" secondAttribute="trailing" constant="20" id="CON-AED-30"/>
+                                            <constraint firstItem="AED-NOTES" firstAttribute="height" constant="100" id="CON-AED-31"/>
+                                            <constraint firstItem="AED-CONTENT" firstAttribute="bottom" secondItem="AED-NOTES" secondAttribute="bottom" constant="20" id="CON-AED-32"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="AED-CONTENT" firstAttribute="top" secondItem="AED-SCROLL" secondAttribute="top" id="CON-AED-33"/>
+                                    <constraint firstItem="AED-CONTENT" firstAttribute="leading" secondItem="AED-SCROLL" secondAttribute="leading" id="CON-AED-34"/>
+                                    <constraint firstItem="AED-SCROLL" firstAttribute="trailing" secondItem="AED-CONTENT" secondAttribute="trailing" id="CON-AED-35"/>
+                                    <constraint firstItem="AED-SCROLL" firstAttribute="bottom" secondItem="AED-CONTENT" secondAttribute="bottom" id="CON-AED-36"/>
+                                    <constraint firstItem="AED-CONTENT" firstAttribute="width" secondItem="AED-SCROLL" secondAttribute="width" id="CON-AED-37"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AED-SCROLL" firstAttribute="top" secondItem="AED-002" secondAttribute="top" id="CON-AED-38"/>
+                            <constraint firstItem="AED-SCROLL" firstAttribute="leading" secondItem="AED-002" secondAttribute="leading" id="CON-AED-39"/>
+                            <constraint firstItem="AED-002" firstAttribute="trailing" secondItem="AED-SCROLL" secondAttribute="trailing" id="CON-AED-40"/>
+                            <constraint firstItem="AED-002" firstAttribute="bottom" secondItem="AED-SCROLL" secondAttribute="bottom" id="CON-AED-41"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="AED-NI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AED-CANCELBTN">
+                            <connections>
+                                <action selector="cancelTapped" destination="AED-001" id="AC-AED-CANCEL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="AED-SAVEBTN">
+                            <connections>
+                                <action selector="saveTapped" destination="AED-001" id="AC-AED-SAVE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="photoImageView" destination="AED-PHOTO" id="OL-AED-01"/>
+                        <outlet property="nameField" destination="AED-NAME" id="OL-AED-02"/>
+                        <outlet property="breedField" destination="AED-BREED" id="OL-AED-03"/>
+                        <outlet property="ageField" destination="AED-AGE" id="OL-AED-04"/>
+                        <outlet property="notesTextView" destination="AED-NOTES" id="OL-AED-05"/>
+                        <outlet property="saveButton" destination="AED-SAVEBTN" id="OL-AED-06"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AED-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -140,9 +484,85 @@
                     <view key="view" contentMode="scaleToFill" id="MED-002">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" numberOfLines="0" text="Medication Name" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MED-NAME">
+                                <rect key="frame" x="16" y="60" width="361" height="26"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" numberOfLines="0" text="Dosage • Time • Frequency" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MED-DETAIL">
+                                <rect key="frame" x="16" y="94" width="361" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" numberOfLines="0" text="Notes" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MED-NOTES">
+                                <rect key="frame" x="16" y="138" width="361" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" numberOfLines="0" text="Vet" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MED-VET">
+                                <rect key="frame" x="16" y="164" width="361" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECENT HISTORY" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MED-HISTHEADER">
+                                <rect key="frame" x="16" y="196" width="361" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="MED-TABLE">
+                                <rect key="frame" x="0.0" y="220" width="393" height="632"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" style="IBUITableViewCellStyleValue1" id="HIST-CELL">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HIST-CELL" id="HIST-CV">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="MED-001" id="OL-MED-DS"/>
+                                    <outlet property="delegate" destination="MED-001" id="OL-MED-DEL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MED-NAME" firstAttribute="top" secondItem="MED-002" secondAttribute="top" constant="60" id="CON-MED-01"/>
+                            <constraint firstItem="MED-NAME" firstAttribute="leading" secondItem="MED-002" secondAttribute="leading" constant="16" id="CON-MED-02"/>
+                            <constraint firstItem="MED-002" firstAttribute="trailing" secondItem="MED-NAME" secondAttribute="trailing" constant="16" id="CON-MED-03"/>
+                            <constraint firstItem="MED-DETAIL" firstAttribute="top" secondItem="MED-NAME" secondAttribute="bottom" constant="8" id="CON-MED-04"/>
+                            <constraint firstItem="MED-DETAIL" firstAttribute="leading" secondItem="MED-002" secondAttribute="leading" constant="16" id="CON-MED-05"/>
+                            <constraint firstItem="MED-002" firstAttribute="trailing" secondItem="MED-DETAIL" secondAttribute="trailing" constant="16" id="CON-MED-06"/>
+                            <constraint firstItem="MED-NOTES" firstAttribute="top" secondItem="MED-DETAIL" secondAttribute="bottom" constant="8" id="CON-MED-07"/>
+                            <constraint firstItem="MED-NOTES" firstAttribute="leading" secondItem="MED-002" secondAttribute="leading" constant="16" id="CON-MED-08"/>
+                            <constraint firstItem="MED-002" firstAttribute="trailing" secondItem="MED-NOTES" secondAttribute="trailing" constant="16" id="CON-MED-09"/>
+                            <constraint firstItem="MED-VET" firstAttribute="top" secondItem="MED-NOTES" secondAttribute="bottom" constant="6" id="CON-MED-10"/>
+                            <constraint firstItem="MED-VET" firstAttribute="leading" secondItem="MED-002" secondAttribute="leading" constant="16" id="CON-MED-11"/>
+                            <constraint firstItem="MED-002" firstAttribute="trailing" secondItem="MED-VET" secondAttribute="trailing" constant="16" id="CON-MED-12"/>
+                            <constraint firstItem="MED-HISTHEADER" firstAttribute="top" secondItem="MED-VET" secondAttribute="bottom" constant="16" id="CON-MED-13"/>
+                            <constraint firstItem="MED-HISTHEADER" firstAttribute="leading" secondItem="MED-002" secondAttribute="leading" constant="16" id="CON-MED-14"/>
+                            <constraint firstItem="MED-002" firstAttribute="trailing" secondItem="MED-HISTHEADER" secondAttribute="trailing" constant="16" id="CON-MED-15"/>
+                            <constraint firstItem="MED-TABLE" firstAttribute="top" secondItem="MED-HISTHEADER" secondAttribute="bottom" constant="8" id="CON-MED-16"/>
+                            <constraint firstItem="MED-TABLE" firstAttribute="leading" secondItem="MED-002" secondAttribute="leading" id="CON-MED-17"/>
+                            <constraint firstItem="MED-002" firstAttribute="trailing" secondItem="MED-TABLE" secondAttribute="trailing" id="CON-MED-18"/>
+                            <constraint firstItem="MED-002" firstAttribute="bottom" secondItem="MED-TABLE" secondAttribute="bottom" id="CON-MED-19"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="MED-NI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="MED-EDITBTN">
+                            <connections>
+                                <action selector="editTapped" destination="MED-001" id="AC-MED-EDIT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="nameLabel" destination="MED-NAME" id="OL-MED-01"/>
+                        <outlet property="detailLabel" destination="MED-DETAIL" id="OL-MED-02"/>
+                        <outlet property="notesLabel" destination="MED-NOTES" id="OL-MED-03"/>
+                        <outlet property="vetLabel" destination="MED-VET" id="OL-MED-04"/>
+                        <outlet property="tableView" destination="MED-TABLE" id="OL-MED-05"/>
                         <segue destination="AEM-001" kind="show" identifier="editMedication" id="SEG-EDIT-MED"/>
                     </connections>
                 </viewController>
@@ -158,8 +578,276 @@
                     <view key="view" contentMode="scaleToFill" id="AEM-002">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-SCROLL">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-CONTENT">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="900"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fill" alignment="fill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-STACK">
+                                                <rect key="frame" x="20" y="20" width="353" height="860"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication Name" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-L1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-NAME">
+                                                        <rect key="frame" x="0.0" y="20" width="353" height="36"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dosage" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-L2">
+                                                        <rect key="frame" x="0.0" y="60" width="353" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-DOSAGE">
+                                                        <rect key="frame" x="0.0" y="80" width="353" height="36"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-L3">
+                                                        <rect key="frame" x="0.0" y="120" width="353" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-SEG">
+                                                        <rect key="frame" x="0.0" y="140" width="353" height="32"/>
+                                                        <segments>
+                                                            <segment title="Once a day"/>
+                                                            <segment title="Twice a day"/>
+                                                            <segment title="Specific days"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="frequencyChanged" destination="AEM-001" eventType="valueChanged" id="AC-AEM-FREQ"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-T1L">
+                                                        <rect key="frame" x="0.0" y="188" width="353" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <datePicker contentHorizontalAlignment="left" contentVerticalAlignment="top" datePickerMode="time" preferredDatePickerStyle="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-T1P">
+                                                        <rect key="frame" x="0.0" y="208" width="120" height="34"/>
+                                                    </datePicker>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-T2C">
+                                                        <rect key="frame" x="0.0" y="258" width="353" height="66"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time 2" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-T2L">
+                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="16"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </label>
+                                                            <datePicker contentHorizontalAlignment="left" contentVerticalAlignment="top" datePickerMode="time" preferredDatePickerStyle="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-T2P">
+                                                                <rect key="frame" x="0.0" y="20" width="120" height="34"/>
+                                                            </datePicker>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="AEM-T2L" firstAttribute="top" secondItem="AEM-T2C" secondAttribute="top" id="CON-AEM-T2-01"/>
+                                                            <constraint firstItem="AEM-T2L" firstAttribute="leading" secondItem="AEM-T2C" secondAttribute="leading" id="CON-AEM-T2-02"/>
+                                                            <constraint firstItem="AEM-T2C" firstAttribute="trailing" secondItem="AEM-T2L" secondAttribute="trailing" id="CON-AEM-T2-03"/>
+                                                            <constraint firstItem="AEM-T2P" firstAttribute="top" secondItem="AEM-T2L" secondAttribute="bottom" constant="4" id="CON-AEM-T2-04"/>
+                                                            <constraint firstItem="AEM-T2P" firstAttribute="leading" secondItem="AEM-T2C" secondAttribute="leading" id="CON-AEM-T2-05"/>
+                                                            <constraint firstItem="AEM-T2C" firstAttribute="bottom" secondItem="AEM-T2P" secondAttribute="bottom" id="CON-AEM-T2-06"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WDC">
+                                                        <rect key="frame" x="0.0" y="340" width="353" height="60"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days of the Week" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WDL">
+                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="16"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="horizontal" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WDROW">
+                                                                <rect key="frame" x="0.0" y="20" width="353" height="36"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WD1">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="47" height="36"/>
+                                                                        <state key="normal" title="Sun"/>
+                                                                        <connections>
+                                                                            <action selector="weekdayTapped:" destination="AEM-001" eventType="touchUpInside" id="AC-AEM-WD1"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WD2">
+                                                                        <rect key="frame" x="51" y="0.0" width="47" height="36"/>
+                                                                        <state key="normal" title="Mon"/>
+                                                                        <connections>
+                                                                            <action selector="weekdayTapped:" destination="AEM-001" eventType="touchUpInside" id="AC-AEM-WD2"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WD3">
+                                                                        <rect key="frame" x="102" y="0.0" width="47" height="36"/>
+                                                                        <state key="normal" title="Tue"/>
+                                                                        <connections>
+                                                                            <action selector="weekdayTapped:" destination="AEM-001" eventType="touchUpInside" id="AC-AEM-WD3"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WD4">
+                                                                        <rect key="frame" x="153" y="0.0" width="47" height="36"/>
+                                                                        <state key="normal" title="Wed"/>
+                                                                        <connections>
+                                                                            <action selector="weekdayTapped:" destination="AEM-001" eventType="touchUpInside" id="AC-AEM-WD4"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WD5">
+                                                                        <rect key="frame" x="204" y="0.0" width="47" height="36"/>
+                                                                        <state key="normal" title="Thu"/>
+                                                                        <connections>
+                                                                            <action selector="weekdayTapped:" destination="AEM-001" eventType="touchUpInside" id="AC-AEM-WD5"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WD6">
+                                                                        <rect key="frame" x="255" y="0.0" width="47" height="36"/>
+                                                                        <state key="normal" title="Fri"/>
+                                                                        <connections>
+                                                                            <action selector="weekdayTapped:" destination="AEM-001" eventType="touchUpInside" id="AC-AEM-WD6"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-WD7">
+                                                                        <rect key="frame" x="306" y="0.0" width="47" height="36"/>
+                                                                        <state key="normal" title="Sat"/>
+                                                                        <connections>
+                                                                            <action selector="weekdayTapped:" destination="AEM-001" eventType="touchUpInside" id="AC-AEM-WD7"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="AEM-WDL" firstAttribute="top" secondItem="AEM-WDC" secondAttribute="top" id="CON-AEM-WD-01"/>
+                                                            <constraint firstItem="AEM-WDL" firstAttribute="leading" secondItem="AEM-WDC" secondAttribute="leading" id="CON-AEM-WD-02"/>
+                                                            <constraint firstItem="AEM-WDC" firstAttribute="trailing" secondItem="AEM-WDL" secondAttribute="trailing" id="CON-AEM-WD-03"/>
+                                                            <constraint firstItem="AEM-WDROW" firstAttribute="top" secondItem="AEM-WDL" secondAttribute="bottom" constant="4" id="CON-AEM-WD-04"/>
+                                                            <constraint firstItem="AEM-WDROW" firstAttribute="leading" secondItem="AEM-WDC" secondAttribute="leading" id="CON-AEM-WD-05"/>
+                                                            <constraint firstItem="AEM-WDC" firstAttribute="trailing" secondItem="AEM-WDROW" secondAttribute="trailing" id="CON-AEM-WD-06"/>
+                                                            <constraint firstItem="AEM-WDC" firstAttribute="bottom" secondItem="AEM-WDROW" secondAttribute="bottom" id="CON-AEM-WD-07"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-L5">
+                                                        <rect key="frame" x="0.0" y="416" width="353" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <datePicker contentHorizontalAlignment="left" contentVerticalAlignment="top" datePickerMode="date" preferredDatePickerStyle="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-SDP">
+                                                        <rect key="frame" x="0.0" y="436" width="140" height="34"/>
+                                                    </datePicker>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has End Date" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-L6">
+                                                        <rect key="frame" x="0.0" y="486" width="353" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-SW">
+                                                        <rect key="frame" x="0.0" y="506" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="endDateSwitchChanged" destination="AEM-001" eventType="valueChanged" id="AC-AEM-SW"/>
+                                                        </connections>
+                                                    </switch>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-EDC">
+                                                        <rect key="frame" x="0.0" y="553" width="353" height="66"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-EDL">
+                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="16"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </label>
+                                                            <datePicker contentHorizontalAlignment="left" contentVerticalAlignment="top" datePickerMode="date" preferredDatePickerStyle="compact" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-EDP">
+                                                                <rect key="frame" x="0.0" y="20" width="140" height="34"/>
+                                                            </datePicker>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="AEM-EDL" firstAttribute="top" secondItem="AEM-EDC" secondAttribute="top" id="CON-AEM-ED-01"/>
+                                                            <constraint firstItem="AEM-EDL" firstAttribute="leading" secondItem="AEM-EDC" secondAttribute="leading" id="CON-AEM-ED-02"/>
+                                                            <constraint firstItem="AEM-EDC" firstAttribute="trailing" secondItem="AEM-EDL" secondAttribute="trailing" id="CON-AEM-ED-03"/>
+                                                            <constraint firstItem="AEM-EDP" firstAttribute="top" secondItem="AEM-EDL" secondAttribute="bottom" constant="4" id="CON-AEM-ED-04"/>
+                                                            <constraint firstItem="AEM-EDP" firstAttribute="leading" secondItem="AEM-EDC" secondAttribute="leading" id="CON-AEM-ED-05"/>
+                                                            <constraint firstItem="AEM-EDC" firstAttribute="bottom" secondItem="AEM-EDP" secondAttribute="bottom" id="CON-AEM-ED-06"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veterinarian (optional)" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-L7">
+                                                        <rect key="frame" x="0.0" y="635" width="353" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-VET">
+                                                        <rect key="frame" x="0.0" y="655" width="353" height="36"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-L8">
+                                                        <rect key="frame" x="0.0" y="707" width="353" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEM-NOTES">
+                                                        <rect key="frame" x="0.0" y="727" width="353" height="100"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="AEM-STACK" firstAttribute="top" secondItem="AEM-CONTENT" secondAttribute="top" constant="20" id="CON-AEM-01"/>
+                                            <constraint firstItem="AEM-STACK" firstAttribute="leading" secondItem="AEM-CONTENT" secondAttribute="leading" constant="20" id="CON-AEM-02"/>
+                                            <constraint firstItem="AEM-CONTENT" firstAttribute="trailing" secondItem="AEM-STACK" secondAttribute="trailing" constant="20" id="CON-AEM-03"/>
+                                            <constraint firstItem="AEM-CONTENT" firstAttribute="bottom" secondItem="AEM-STACK" secondAttribute="bottom" constant="20" id="CON-AEM-04"/>
+                                            <constraint firstItem="AEM-NOTES" firstAttribute="height" constant="100" id="CON-AEM-05"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="AEM-CONTENT" firstAttribute="top" secondItem="AEM-SCROLL" secondAttribute="top" id="CON-AEM-06"/>
+                                    <constraint firstItem="AEM-CONTENT" firstAttribute="leading" secondItem="AEM-SCROLL" secondAttribute="leading" id="CON-AEM-07"/>
+                                    <constraint firstItem="AEM-SCROLL" firstAttribute="trailing" secondItem="AEM-CONTENT" secondAttribute="trailing" id="CON-AEM-08"/>
+                                    <constraint firstItem="AEM-SCROLL" firstAttribute="bottom" secondItem="AEM-CONTENT" secondAttribute="bottom" id="CON-AEM-09"/>
+                                    <constraint firstItem="AEM-CONTENT" firstAttribute="width" secondItem="AEM-SCROLL" secondAttribute="width" id="CON-AEM-10"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AEM-SCROLL" firstAttribute="top" secondItem="AEM-002" secondAttribute="top" id="CON-AEM-11"/>
+                            <constraint firstItem="AEM-SCROLL" firstAttribute="leading" secondItem="AEM-002" secondAttribute="leading" id="CON-AEM-12"/>
+                            <constraint firstItem="AEM-002" firstAttribute="trailing" secondItem="AEM-SCROLL" secondAttribute="trailing" id="CON-AEM-13"/>
+                            <constraint firstItem="AEM-002" firstAttribute="bottom" secondItem="AEM-SCROLL" secondAttribute="bottom" id="CON-AEM-14"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="AEM-NI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AEM-CANCELBTN">
+                            <connections>
+                                <action selector="cancelTapped" destination="AEM-001" id="AC-AEM-CANCEL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="AEM-SAVEBTN">
+                            <connections>
+                                <action selector="saveTapped" destination="AEM-001" id="AC-AEM-SAVE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameField" destination="AEM-NAME" id="OL-AEM-01"/>
+                        <outlet property="dosageField" destination="AEM-DOSAGE" id="OL-AEM-02"/>
+                        <outlet property="frequencyControl" destination="AEM-SEG" id="OL-AEM-03"/>
+                        <outlet property="time1Label" destination="AEM-T1L" id="OL-AEM-04"/>
+                        <outlet property="time1Picker" destination="AEM-T1P" id="OL-AEM-05"/>
+                        <outlet property="time2Container" destination="AEM-T2C" id="OL-AEM-06"/>
+                        <outlet property="time2Picker" destination="AEM-T2P" id="OL-AEM-07"/>
+                        <outlet property="weekdaysContainer" destination="AEM-WDC" id="OL-AEM-08"/>
+                        <outlet property="weekdayButtons" destination="AEM-WD1" id="OL-AEM-09"/>
+                        <outlet property="weekdayButtons" destination="AEM-WD2" id="OL-AEM-10"/>
+                        <outlet property="weekdayButtons" destination="AEM-WD3" id="OL-AEM-11"/>
+                        <outlet property="weekdayButtons" destination="AEM-WD4" id="OL-AEM-12"/>
+                        <outlet property="weekdayButtons" destination="AEM-WD5" id="OL-AEM-13"/>
+                        <outlet property="weekdayButtons" destination="AEM-WD6" id="OL-AEM-14"/>
+                        <outlet property="weekdayButtons" destination="AEM-WD7" id="OL-AEM-15"/>
+                        <outlet property="startDatePicker" destination="AEM-SDP" id="OL-AEM-16"/>
+                        <outlet property="hasEndDateSwitch" destination="AEM-SW" id="OL-AEM-17"/>
+                        <outlet property="endDateContainer" destination="AEM-EDC" id="OL-AEM-18"/>
+                        <outlet property="endDatePicker" destination="AEM-EDP" id="OL-AEM-19"/>
+                        <outlet property="vetNameField" destination="AEM-VET" id="OL-AEM-20"/>
+                        <outlet property="notesTextView" destination="AEM-NOTES" id="OL-AEM-21"/>
+                        <outlet property="saveButton" destination="AEM-SAVEBTN" id="OL-AEM-22"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEM-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -191,8 +879,45 @@
                     <view key="view" contentMode="scaleToFill" id="SET-002">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appearance" textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SET-L1">
+                                <rect key="frame" x="20" y="84" width="353" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SET-SEG">
+                                <rect key="frame" x="20" y="104" width="353" height="32"/>
+                                <segments>
+                                    <segment title="Light"/>
+                                    <segment title="Dark"/>
+                                    <segment title="System"/>
+                                </segments>
+                                <connections>
+                                    <action selector="appearanceChanged" destination="SET-001" eventType="valueChanged" id="AC-SET-CHANGE"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" numberOfLines="0" text="DogMed helps you keep track of your dogs' medications. It does not provide medical advice — always follow your veterinarian's instructions." textAlignment="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SET-INFO">
+                                <rect key="frame" x="20" y="168" width="353" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SET-L1" firstAttribute="top" secondItem="SET-002" secondAttribute="top" constant="84" id="CON-SET-01"/>
+                            <constraint firstItem="SET-L1" firstAttribute="leading" secondItem="SET-002" secondAttribute="leading" constant="20" id="CON-SET-02"/>
+                            <constraint firstItem="SET-002" firstAttribute="trailing" secondItem="SET-L1" secondAttribute="trailing" constant="20" id="CON-SET-03"/>
+                            <constraint firstItem="SET-SEG" firstAttribute="top" secondItem="SET-L1" secondAttribute="bottom" constant="4" id="CON-SET-04"/>
+                            <constraint firstItem="SET-SEG" firstAttribute="leading" secondItem="SET-002" secondAttribute="leading" constant="20" id="CON-SET-05"/>
+                            <constraint firstItem="SET-002" firstAttribute="trailing" secondItem="SET-SEG" secondAttribute="trailing" constant="20" id="CON-SET-06"/>
+                            <constraint firstItem="SET-INFO" firstAttribute="top" secondItem="SET-SEG" secondAttribute="bottom" constant="32" id="CON-SET-07"/>
+                            <constraint firstItem="SET-INFO" firstAttribute="leading" secondItem="SET-002" secondAttribute="leading" constant="20" id="CON-SET-08"/>
+                            <constraint firstItem="SET-002" firstAttribute="trailing" secondItem="SET-INFO" secondAttribute="trailing" constant="20" id="CON-SET-09"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="SET-SEG" id="OL-SET-01"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SET-003" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

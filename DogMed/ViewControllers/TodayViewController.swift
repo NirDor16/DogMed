@@ -14,9 +14,6 @@ class TodayViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Today"
-        tableView.register(TodayMedicationCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 70
         tableView.backgroundColor = .systemGroupedBackground
 
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .dogMedDataDidChange, object: nil)

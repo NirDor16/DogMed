@@ -2,59 +2,15 @@ import UIKit
 
 class DogListCell: UITableViewCell {
 
-    private let photoImageView = UIImageView()
-    private let nameLabel = UILabel()
-    private let detailLabel = UILabel()
-    private let medsLabel = UILabel()
+    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var medsLabel: UILabel!
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupViews()
-    }
-
-    private func setupViews() {
-        accessoryType = .disclosureIndicator
-
-        photoImageView.translatesAutoresizingMaskIntoConstraints = false
-        photoImageView.contentMode = .scaleAspectFill
-        photoImageView.clipsToBounds = true
+    override func awakeFromNib() {
+        super.awakeFromNib()
         photoImageView.layer.cornerRadius = 24
-        photoImageView.backgroundColor = .secondarySystemBackground
-        photoImageView.tintColor = .secondaryLabel
-
-        nameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
-        nameLabel.textColor = .label
-
-        detailLabel.font = .systemFont(ofSize: 14)
-        detailLabel.textColor = .secondaryLabel
-
-        medsLabel.font = .systemFont(ofSize: 13)
-        medsLabel.textColor = .secondaryLabel
-
-        let textStack = UIStackView(arrangedSubviews: [nameLabel, detailLabel, medsLabel])
-        textStack.axis = .vertical
-        textStack.spacing = 2
-        textStack.translatesAutoresizingMaskIntoConstraints = false
-
-        contentView.addSubview(photoImageView)
-        contentView.addSubview(textStack)
-
-        NSLayoutConstraint.activate([
-            photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            photoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            photoImageView.widthAnchor.constraint(equalToConstant: 48),
-            photoImageView.heightAnchor.constraint(equalToConstant: 48),
-
-            textStack.leadingAnchor.constraint(equalTo: photoImageView.trailingAnchor, constant: 12),
-            textStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            textStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-        ])
+        photoImageView.clipsToBounds = true
     }
 
     func configure(dog: Dog) {

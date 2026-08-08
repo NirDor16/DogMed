@@ -7,11 +7,7 @@ class DogsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "My Dogs"
-        tableView.register(DogListCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 76
         tableView.backgroundColor = .systemGroupedBackground
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
 
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .dogMedDataDidChange, object: nil)
     }
@@ -27,7 +23,7 @@ class DogsListViewController: UITableViewController {
         }
     }
 
-    @objc private func addTapped() {
+    @IBAction private func addTapped() {
         performSegue(withIdentifier: "showAddDog", sender: nil)
     }
 

@@ -5,113 +5,24 @@ class AddEditDogViewController: UIViewController {
 
     var dog: Dog?
 
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-
-    private let photoImageView = UIImageView()
-    private let choosePhotoButton = UIButton(type: .system)
-    private let nameField = UITextField()
-    private let breedField = UITextField()
-    private let ageField = UITextField()
-    private let notesTextView = UITextView()
+    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var breedField: UITextField!
+    @IBOutlet weak var ageField: UITextField!
+    @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
 
     private var pickedImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         title = dog == nil ? "Add Dog" : "Edit Dog"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
-        setupForm()
-        populateFields()
-    }
-
-    private func setupForm() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-        ])
-
-        photoImageView.translatesAutoresizingMaskIntoConstraints = false
-        photoImageView.contentMode = .scaleAspectFill
+        photoImageView.layer.cornerRadius = photoImageView.bounds.width / 2
         photoImageView.clipsToBounds = true
-        photoImageView.layer.cornerRadius = 45
-        photoImageView.backgroundColor = .secondarySystemBackground
-        photoImageView.tintColor = .secondaryLabel
-        photoImageView.image = UIImage(systemName: "pawprint.circle.fill")
-
-        choosePhotoButton.setTitle("Choose Photo", for: .normal)
-        choosePhotoButton.addTarget(self, action: #selector(choosePhotoTapped), for: .touchUpInside)
-
-        let nameStack = labeledRow(title: "Name", field: nameField)
-        let breedStack = labeledRow(title: "Breed", field: breedField)
-        ageField.keyboardType = .numberPad
-        let ageStack = labeledRow(title: "Age (years)", field: ageField)
-
-        notesTextView.translatesAutoresizingMaskIntoConstraints = false
-        notesTextView.font = .systemFont(ofSize: 16)
         notesTextView.layer.borderColor = UIColor.separator.cgColor
         notesTextView.layer.borderWidth = 1
         notesTextView.layer.cornerRadius = 8
-        notesTextView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-
-        let notesLabel = UILabel()
-        notesLabel.text = "Notes"
-        notesLabel.font = .systemFont(ofSize: 13, weight: .semibold)
-        notesLabel.textColor = .secondaryLabel
-
-        let notesStack = UIStackView(arrangedSubviews: [notesLabel, notesTextView])
-        notesStack.axis = .vertical
-        notesStack.spacing = 4
-
-        let mainStack = UIStackView(arrangedSubviews: [photoImageView, choosePhotoButton, nameStack, breedStack, ageStack, notesStack])
-        mainStack.axis = .vertical
-        mainStack.spacing = 16
-        mainStack.alignment = .fill
-        mainStack.translatesAutoresizingMaskIntoConstraints = false
-        mainStack.setCustomSpacing(4, after: photoImageView)
-
-        contentView.addSubview(mainStack)
-
-        NSLayoutConstraint.activate([
-            photoImageView.widthAnchor.constraint(equalToConstant: 90),
-            photoImageView.heightAnchor.constraint(equalToConstant: 90),
-            photoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-
-            mainStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            mainStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            mainStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            mainStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
-        ])
-    }
-
-    private func labeledRow(title: String, field: UITextField) -> UIStackView {
-        let label = UILabel()
-        label.text = title
-        label.font = .systemFont(ofSize: 13, weight: .semibold)
-        label.textColor = .secondaryLabel
-
-        field.borderStyle = .roundedRect
-        field.font = .systemFont(ofSize: 16)
-
-        let stack = UIStackView(arrangedSubviews: [label, field])
-        stack.axis = .vertical
-        stack.spacing = 4
-        return stack
+        populateFields()
     }
 
     private func populateFields() {
@@ -125,7 +36,7 @@ class AddEditDogViewController: UIViewController {
         }
     }
 
-    @objc private func choosePhotoTapped() {
+    @IBAction func choosePhotoTapped() {
         var config = PHPickerConfiguration()
         config.filter = .images
         config.selectionLimit = 1
@@ -134,11 +45,11 @@ class AddEditDogViewController: UIViewController {
         present(picker, animated: true)
     }
 
-    @objc private func cancelTapped() {
+    @IBAction func cancelTapped() {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc private func saveTapped() {
+    @IBAction func saveTapped() {
         let name = nameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         guard !name.isEmpty else {
             showAlert(message: "Please enter a dog name.")
@@ -156,10 +67,10 @@ class AddEditDogViewController: UIViewController {
         let id = dog?.id ?? ""
         let newDog = Dog(id: id, name: name, breed: breed, age: age, notes: notes, photoBase64: photoBase64, medications: dog?.medications ?? [])
 
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        saveButton.isEnabled = false
         let completion: (Error?) -> Void = { [weak self] error in
             DispatchQueue.main.async {
-                self?.navigationItem.rightBarButtonItem?.isEnabled = true
+                self?.saveButton.isEnabled = true
                 if let error = error {
                     self?.showAlert(message: error.localizedDescription)
                     return
