@@ -19,8 +19,12 @@ class DogDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = dog.name
+        view.backgroundColor = .systemBackground
         imageView.layer.cornerRadius = imageView.bounds.width / 2
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .secondarySystemBackground
+        breedAgeLabel.textColor = .secondaryLabel
+        tableView.backgroundColor = .systemBackground
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableView.automaticDimension

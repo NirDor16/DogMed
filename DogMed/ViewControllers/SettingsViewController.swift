@@ -7,6 +7,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
+        view.backgroundColor = .systemBackground
         switch ThemeManager.shared.mode {
         case .light: segmentedControl.selectedSegmentIndex = 0
         case .dark: segmentedControl.selectedSegmentIndex = 1

@@ -17,8 +17,12 @@ class AddEditDogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = dog == nil ? "Add Dog" : "Edit Dog"
+        view.backgroundColor = .systemBackground
         photoImageView.layer.cornerRadius = photoImageView.bounds.width / 2
         photoImageView.clipsToBounds = true
+        photoImageView.backgroundColor = .secondarySystemBackground
+        notesTextView.backgroundColor = .systemBackground
+        notesTextView.textColor = .label
         notesTextView.layer.borderColor = UIColor.separator.cgColor
         notesTextView.layer.borderWidth = 1
         notesTextView.layer.cornerRadius = 8

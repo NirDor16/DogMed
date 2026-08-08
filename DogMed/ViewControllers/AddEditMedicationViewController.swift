@@ -27,6 +27,9 @@ class AddEditMedicationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = medication == nil ? "Add Medication" : "Edit Medication"
+        view.backgroundColor = .systemBackground
+        notesTextView.backgroundColor = .systemBackground
+        notesTextView.textColor = .label
         notesTextView.layer.borderColor = UIColor.separator.cgColor
         notesTextView.layer.borderWidth = 1
         notesTextView.layer.cornerRadius = 8

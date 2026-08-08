@@ -11,6 +11,9 @@ class DogListCell: UITableViewCell {
         super.awakeFromNib()
         photoImageView.layer.cornerRadius = 24
         photoImageView.clipsToBounds = true
+        photoImageView.backgroundColor = .secondarySystemBackground
+        detailLabel.textColor = .secondaryLabel
+        medsLabel.textColor = .secondaryLabel
     }
 
     func configure(dog: Dog) {

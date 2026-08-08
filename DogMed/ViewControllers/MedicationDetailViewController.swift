@@ -36,6 +36,10 @@ class MedicationDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = medication.name
+        view.backgroundColor = .systemBackground
+        detailLabel.textColor = .secondaryLabel
+        vetLabel.textColor = .secondaryLabel
+        tableView.backgroundColor = .systemBackground
         tableView.dataSource = self
         tableView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .dogMedDataDidChange, object: nil)

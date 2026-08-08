@@ -10,6 +10,7 @@ class MedicationListCell: UITableViewCell {
         super.awakeFromNib()
         statusLabel.layer.cornerRadius = 8
         statusLabel.clipsToBounds = true
+        detailLabel.textColor = .secondaryLabel
     }
 
     func configure(medication: Medication) {

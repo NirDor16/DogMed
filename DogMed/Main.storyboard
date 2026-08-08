@@ -291,7 +291,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="DDC-IMG" firstAttribute="top" secondItem="DDC-002" secondAttribute="top" constant="72" id="CON-DDC-01"/>
+                            <constraint firstItem="DDC-IMG" firstAttribute="top" secondItem="DDC-002" secondAttribute="top" constant="112" id="CON-DDC-01"/>
                             <constraint firstItem="DDC-IMG" firstAttribute="centerX" secondItem="DDC-002" secondAttribute="centerX" id="CON-DDC-02"/>
                             <constraint firstItem="DDC-IMG" firstAttribute="width" constant="80" id="CON-DDC-03"/>
                             <constraint firstItem="DDC-IMG" firstAttribute="height" constant="80" id="CON-DDC-04"/>
@@ -396,7 +396,6 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="AED-PHOTO" firstAttribute="top" secondItem="AED-CONTENT" secondAttribute="top" constant="20" id="CON-AED-01"/>
                                             <constraint firstItem="AED-PHOTO" firstAttribute="centerX" secondItem="AED-CONTENT" secondAttribute="centerX" id="CON-AED-02"/>
@@ -433,7 +432,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="AED-CONTENT" firstAttribute="top" secondItem="AED-SCROLL" secondAttribute="top" id="CON-AED-33"/>
                                     <constraint firstItem="AED-CONTENT" firstAttribute="leading" secondItem="AED-SCROLL" secondAttribute="leading" id="CON-AED-34"/>
@@ -529,7 +527,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="MED-NAME" firstAttribute="top" secondItem="MED-002" secondAttribute="top" constant="60" id="CON-MED-01"/>
+                            <constraint firstItem="MED-NAME" firstAttribute="top" secondItem="MED-002" secondAttribute="top" constant="112" id="CON-MED-01"/>
                             <constraint firstItem="MED-NAME" firstAttribute="leading" secondItem="MED-002" secondAttribute="leading" constant="16" id="CON-MED-02"/>
                             <constraint firstItem="MED-002" firstAttribute="trailing" secondItem="MED-NAME" secondAttribute="trailing" constant="16" id="CON-MED-03"/>
                             <constraint firstItem="MED-DETAIL" firstAttribute="top" secondItem="MED-NAME" secondAttribute="bottom" constant="8" id="CON-MED-04"/>
@@ -784,7 +782,6 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="AEM-STACK" firstAttribute="top" secondItem="AEM-CONTENT" secondAttribute="top" constant="20" id="CON-AEM-01"/>
                                             <constraint firstItem="AEM-STACK" firstAttribute="leading" secondItem="AEM-CONTENT" secondAttribute="leading" constant="20" id="CON-AEM-02"/>
@@ -794,7 +791,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="AEM-CONTENT" firstAttribute="top" secondItem="AEM-SCROLL" secondAttribute="top" id="CON-AEM-06"/>
                                     <constraint firstItem="AEM-CONTENT" firstAttribute="leading" secondItem="AEM-SCROLL" secondAttribute="leading" id="CON-AEM-07"/>
@@ -904,7 +900,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SET-L1" firstAttribute="top" secondItem="SET-002" secondAttribute="top" constant="84" id="CON-SET-01"/>
+                            <constraint firstItem="SET-L1" firstAttribute="top" secondItem="SET-002" secondAttribute="top" constant="120" id="CON-SET-01"/>
                             <constraint firstItem="SET-L1" firstAttribute="leading" secondItem="SET-002" secondAttribute="leading" constant="20" id="CON-SET-02"/>
                             <constraint firstItem="SET-002" firstAttribute="trailing" secondItem="SET-L1" secondAttribute="trailing" constant="20" id="CON-SET-03"/>
                             <constraint firstItem="SET-SEG" firstAttribute="top" secondItem="SET-L1" secondAttribute="bottom" constant="4" id="CON-SET-04"/>

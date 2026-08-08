@@ -9,6 +9,11 @@ class TodayMedicationCell: UITableViewCell {
 
     private var onToggle: (() -> Void)?
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        subtitleLabel.textColor = .secondaryLabel
+    }
+
     func configure(row: TodayRow, onToggle: @escaping () -> Void) {
         timeLabel.text = row.occurrence.time
         titleLabel.text = "\(row.dog.name) — \(row.medication.name)"
